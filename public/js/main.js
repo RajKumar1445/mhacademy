@@ -1,0 +1,300 @@
+/* =========================================
+   FALLING STARS BACKGROUND (THREE JS)
+========================================= */
+
+let scene, camera, renderer, stars;
+
+function initStars() {
+
+const container = document.getElementById("three-bg");
+if (!container) return;
+
+scene = new THREE.Scene();
+
+camera = new THREE.PerspectiveCamera(
+75,
+window.innerWidth / window.innerHeight,
+1,
+3000
+);
+
+camera.position.z = 1000;
+
+renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+const starGeometry = new THREE.BufferGeometry();
+const starCount = 8000;
+
+const positions = new Float32Array(starCount * 3);
+
+for (let i = 0; i < starCount; i++) {
+
+positions[i * 3] = (Math.random() - 0.5) * 2000;
+positions[i * 3 + 1] = (Math.random() - 0.5) * 2000;
+positions[i * 3 + 2] = Math.random() * -3000;
+
+}
+
+starGeometry.setAttribute(
+"position",
+new THREE.BufferAttribute(positions, 3)
+);
+
+const starMaterial = new THREE.PointsMaterial({
+color: 0x00f7ff,
+size: 2,
+transparent: true,
+opacity: 0.9
+});
+
+stars = new THREE.Points(starGeometry, starMaterial);
+scene.add(stars);
+
+animateStars();
+}
+
+function animateStars() {
+
+if (!stars) return;
+
+const positions = stars.geometry.attributes.position.array;
+
+for (let i = 0; i < positions.length; i += 3) {
+
+positions[i + 2] += 5;   // speed
+
+if (positions[i + 2] > 1000) {
+positions[i + 2] = -3000;
+}
+
+}
+
+stars.geometry.attributes.position.needsUpdate = true;
+
+renderer.render(scene, camera);
+requestAnimationFrame(animateStars);
+}
+
+window.addEventListener("resize", () => {
+
+if (!camera || !renderer) return;
+
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+});
+
+initStars();
+
+
+/* =========================================
+   COUNTER ANIMATION
+========================================= */
+
+const counters = document.querySelectorAll(".counter");
+
+window.addEventListener("scroll", () => {
+
+counters.forEach(counter => {
+
+if (counter.innerText !== "0") return;
+
+const target = +counter.dataset.target;
+let count = 0;
+const speed = target / 120;
+
+function update() {
+count += speed;
+
+if (count < target) {
+counter.innerText = Math.ceil(count);
+requestAnimationFrame(update);
+} else {
+counter.innerText = target;
+}
+}
+
+update();
+
+});
+
+});
+
+
+/* =========================================
+   PROGRAM SLIDER (ARROWS WORKING)
+========================================= */
+
+let current = 0;
+const slides = document.querySelectorAll(".program-card");
+
+function showSlide(index) {
+
+if (slides.length === 0) return;
+
+slides.forEach(slide => slide.classList.remove("active"));
+slides[index].classList.add("active");
+
+}
+
+function nextProgram() {
+
+if (slides.length === 0) return;
+
+current++;
+if (current >= slides.length) current = 0;
+showSlide(current);
+
+}
+
+function prevProgram() {
+
+if (slides.length === 0) return;
+
+current--;
+if (current < 0) current = slides.length - 1;
+showSlide(current);
+
+}
+
+if (slides.length > 0) {
+showSlide(0);
+}
+
+
+/* =========================================
+   WHATSAPP FUNCTION
+========================================= */
+
+function openWhatsApp() {
+
+window.open(
+"https://wa.me/917032932845?text=Hello I want details about courses",
+"_blank"
+);
+
+}
+
+
+/* =========================================
+   ENROLL FUNCTION
+========================================= */
+
+function quickEnroll() {
+
+window.location.href = "payment.html";
+
+}
+
+
+/* =========================================
+   CHATBOT
+========================================= */
+
+function toggleChatbot() {
+
+const box = document.getElementById("chatbot");
+if (!box) return;
+
+box.style.display =
+box.style.display === "block" ? "none" : "block";
+
+}
+
+function botReply(type) {
+
+const body = document.getElementById("chatBody");
+if (!body) return;
+
+let message = "";
+
+if (type === "courses") {
+message = "We offer AI/ML, MERN, Data Science, Cloud, Embedded, EV and more.";
+}
+
+if (type === "fees") {
+message = "Course fees start from ₹10,000. Internship from ₹5,000.";
+}
+
+if (type === "internship") {
+message = "1, 2 and 3 month internship programs available with certification.";
+}
+
+if (type === "placement") {
+message = "Placement assistance available with top product and service companies.";
+}
+
+const p = document.createElement("p");
+p.innerHTML = "<strong>AI:</strong> " + message;
+body.appendChild(p);
+
+body.scrollTop = body.scrollHeight;
+
+}
+/* ============================= */
+/* CAROUSEL WORKING FINAL */
+/* ============================= */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+let index = 0;
+
+const track = document.querySelector(".carousel-track");
+const cards = document.querySelectorAll(".course-card-preview");
+
+if(!track || cards.length === 0) return;
+
+const visibleCards = 3; // how many visible at once
+const cardWidth = cards[0].offsetWidth + 30; // width + gap
+
+window.nextSlide = function(){
+    index++;
+    if(index > cards.length - visibleCards){
+        index = 0;
+    }
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+}
+
+window.prevSlide = function(){
+    index--;
+    if(index < 0){
+        index = cards.length - visibleCards;
+    }
+    track.style.transform = `translateX(-${index * cardWidth}px)`;
+}
+
+/* Auto Slide */
+setInterval(function(){
+    nextSlide();
+}, 4000);
+
+});
+async function submitPayment(){
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    contact: document.getElementById("contact").value,
+    programType: document.getElementById("programType").value,
+    course: document.getElementById("courseSelect").value,
+    amount: 10000
+  }
+
+  try{
+    const res = await fetch('/api/payment',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    })
+
+    const result = await res.json()
+    alert(result.message)
+
+  }catch(error){
+    alert("Error saving payment")
+    console.log(error)
+  }
+}

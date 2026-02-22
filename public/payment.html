@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure Payment | MH Academy</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<header>
+<div class="logo-text">MH Academy</div>
+
+<nav>
+<a href="index.html" class="nav-link ">Home</a>
+<a href="programs.html" class="nav-link ">Programs</a>
+<a href="internship.html" class="nav-link">Internship</a>
+<a href="payment.html" class="nav-link">Payment</a>
+<a href="contact.html" class="nav-link active">Contact</a>
+</nav>
+
+<div class="header-logo">
+<img src=".\images\logo.png" alt="Logo">
+</div>
+</header>
+<body>
+
+<section class="payment-section">
+
+<h1 class="payment-title">Complete Your Enrollment</h1>
+<p class="payment-subtitle">Secure • Fast • Verified</p>
+
+<div class="payment-card">
+
+<form id="paymentForm">
+
+<label>Full Name</label>
+<input type="text" id="studentName" required>
+
+<label>Email Address</label>
+<input type="email" id="studentEmail" required>
+
+<label>Contact Number</label>
+<input type="tel" id="studentPhone" pattern="[0-9]{10}" required>
+
+<label>Program Type</label>
+<select id="programType" onchange="toggleProgramType()">
+<option value="Course">Course</option>
+<option value="Internship">Internship</option>
+</select>
+
+<label>Select Course</label>
+<select id="courseSelect">
+<option>Python Full Stack</option>
+<option>Java Full Stack</option>
+<option>Data Science</option>
+<option>Data Analytics</option>
+<option>AI & ML</option>
+<option>DevOps</option>
+<option>Cloud Computing</option>
+<option>.NET</option>
+<option>Embedded Systems</option>
+<option>EV Technology</option>
+<option>VLSI</option>
+<option>AutoCAD</option>
+<option>Solar PV Systems</option>
+<option>MERN Full Stack</option>
+</select>
+
+<div id="internshipBox" style="display:none;">
+<label>Internship Duration</label>
+<select id="internDuration">
+<option>1 Month</option>
+<option>2 Months</option>
+<option>3 Months</option>
+</select>
+</div>
+
+<button type="button" class="primary-btn" onclick="showPayment()">Proceed To Pay</button>
+
+<div id="paymentOptions" class="payment-options" style="display:none;">
+
+<label>Select Payment Method</label>
+<select onchange="showMethod(this.value)">
+<option value="">Choose</option>
+<option value="qr">QR Code</option>
+<option value="upi">UPI ID</option>
+</select>
+
+<div id="qrBox" class="payment-box" style="display:none;">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=mhacademy@upi">
+</div>
+
+<div id="upiBox" class="payment-box" style="display:none;">
+<h3>UPI ID:</h3>
+<p>mhacademy@upi</p>
+</div>
+
+<label>Upload Screenshot</label>
+<input type="file" accept="image/*">
+
+<button type="button" class="primary-btn" onclick="submitPayment()">Submit</button>
+
+</div>
+
+</form>
+
+<div id="successMessage" style="display:none; color:lime; margin-top:20px;">
+<h2>🎉 Payment Saved Successfully</h2>
+</div>
+
+</div>
+</section>
+
+<script>
+
+/* Toggle Internship */
+function toggleProgramType(){
+const type=document.getElementById("programType").value;
+document.getElementById("internshipBox").style.display =
+type==="Internship"?"block":"none";
+}
+
+/* Show Payment Options */
+function showPayment(){
+
+const name=document.getElementById("studentName").value.trim();
+const email=document.getElementById("studentEmail").value.trim();
+const phone=document.getElementById("studentPhone").value.trim();
+
+if(name==="" || email==="" || phone===""){
+alert("Please fill all details");
+return;
+}
+
+if(phone.length!==10){
+alert("Contact must be 10 digits");
+return;
+}
+
+document.getElementById("paymentOptions").style.display="block";
+}
+
+/* Show QR / UPI */
+function showMethod(val){
+document.getElementById("qrBox").style.display =
+val==="qr"?"block":"none";
+document.getElementById("upiBox").style.display =
+val==="upi"?"block":"none";
+}
+
+/* 🔥 ACTUAL DATABASE SUBMIT */
+async function submitPayment(){
+
+const data = {
+name: document.getElementById("studentName").value,
+email: document.getElementById("studentEmail").value,
+contact: document.getElementById("studentPhone").value,
+programType: document.getElementById("programType").value,
+course: document.getElementById("courseSelect").value,
+internDuration: document.getElementById("internDuration")?.value || null,
+amount: 10000
+}
+
+try{
+
+const res = await fetch('/api/payment',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify(data)
+})
+
+const result = await res.json()
+
+document.getElementById("successMessage").style.display="block"
+document.getElementById("paymentOptions").style.display="none"
+
+}catch(err){
+alert("Error saving payment")
+console.log(err)
+}
+
+}
+<!-- Floating Buttons -->
+<div class="whatsapp-float" onclick="openWhatsApp()">🟢</div>
+<div class="enroll-float" onclick="quickEnroll()">🎓</div>
+<div class="chatbot-float" onclick="toggleChatbot()">💬</div>
+
+<div id="chatbot">
+<div class="chat-header">
+MH AI Assistant
+<span onclick="toggleChatbot()">✖</span>
+</div>
+
+<div id="chatBody" class="chat-body">
+<p>Hello 👋 Select an option:</p>
+</div>
+
+<div class="chat-options">
+<button onclick="botReply('courses')">Courses</button>
+<button onclick="botReply('fees')">Fees</button>
+<button onclick="botReply('internship')">Internship</button>
+<button onclick="botReply('placement')">Placement</button>
+</div>
+</div>
+</script>
+
+</body>
+</html>

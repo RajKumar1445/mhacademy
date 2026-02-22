@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Programs | MH Academy</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+<div id="three-bg"></div>
+
+<header>
+<div class="logo-text">MH Academy</div>
+
+<nav>
+<a href="index.html" class="nav-link ">Home</a>
+<a href="programs.html" class="nav-link active">Programs</a>
+<a href="internship.html" class="nav-link">Internship</a>
+<a href="payment.html" class="nav-link">Payment</a>
+<a href="contact.html" class="nav-link">Contact</a>
+</nav>
+
+<div class="header-logo">
+<img src=".\images\logo.png" alt="Logo">
+</div>
+</header>
+
+<section class="program-slider">
+
+<h2 class="section-title">Select Your Course</h2>
+
+<div class="program-container">
+
+<!-- PYTHON -->
+<div class="program-card program-slide active">
+<img src="images/python.png">
+<h3>Python Full Stack</h3>
+<p>Complete frontend & backend development using Python frameworks.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- JAVA -->
+<div class="program-card program-slide">
+<img src="images/java.png">
+<h3>Java Full Stack</h3>
+<p>Enterprise-level Java development with backend integration.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- DATA ANALYTICS -->
+<div class="program-card program-slide">
+<img src="images/dataanalytics.png">
+<h3>Data Analytics</h3>
+<p>Business data analysis using SQL, Excel & visualization tools.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- DATA SCIENCE -->
+<div class="program-card program-slide">
+<img src="images/datascience.png">
+<h3>Data Science</h3>
+<p>Machine learning, statistics & real-world data modeling.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- AI ML -->
+<div class="program-card program-slide">
+<img src="images/aiml.png">
+<h3>AI & Machine Learning</h3>
+<p>Deep learning, ML algorithms & AI systems training.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- DEVOPS -->
+<div class="program-card program-slide">
+<img src="images/devops.png">
+<h3>DevOps</h3>
+<p>CI/CD pipelines, automation & deployment practices.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- CLOUD -->
+<div class="program-card program-slide">
+<img src="images/cloud.png">
+<h3>Cloud Computing</h3>
+<p>Cloud architecture, deployment & scalability fundamentals.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- DOTNET -->
+<div class="program-card program-slide">
+<img src="images/dotnet.png">
+<h3>.NET Development</h3>
+<p>Microsoft stack application development & enterprise solutions.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- EMBEDDED SYSTEMS -->
+<div class="program-card program-slide">
+<img src="images/es.png">
+<h3>Embedded Systems</h3>
+<p>Microcontrollers, embedded C & hardware interfacing.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- EV TECHNOLOGY -->
+<div class="program-card program-slide">
+<img src="images/ev.png">
+<h3>EV Technology</h3>
+<p>Electric vehicle systems, BMS & power electronics.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- VLSI -->
+<div class="program-card program-slide">
+<img src="images/vlsi.png">
+<h3>VLSI Design</h3>
+<p>Semiconductor design, RTL & verification fundamentals.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- AUTOCAD -->
+<div class="program-card program-slide">
+<img src="images/autocad.png">
+<h3>AutoCAD</h3>
+<p>Professional drafting & engineering drawing skills.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- SOLAR PV -->
+<div class="program-card program-slide">
+<img src="images/spv.png">
+<h3>Solar PV Systems</h3>
+<p>Solar installation, system design & renewable energy training.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- MERN -->
+<div class="program-card program-slide">
+<img src="images/mern.png">
+<h3>MERN Full Stack</h3>
+<p>MongoDB, Express, React & Node full stack development.</p>
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+</div>
+
+<!-- ARROWS -->
+<div class="arrow-nav">
+<div class="arrow" onclick="prevProgram()">❮</div>
+<div class="arrow" onclick="nextProgram()">❯</div>
+</div>
+
+</div>
+</section>
+
+<!-- Floating Buttons -->
+<div class="whatsapp-float" onclick="openWhatsApp()">🟢</div>
+<div class="enroll-float" onclick="quickEnroll()">🎓</div>
+<div class="chatbot-float" onclick="toggleChatbot()">💬</div>
+
+<div id="chatbot">
+<div class="chat-header">
+MH AI Assistant
+<span onclick="toggleChatbot()">✖</span>
+</div>
+
+<div id="chatBody" class="chat-body">
+<p>Hello 👋 Select an option:</p>
+</div>
+
+<div class="chat-options">
+<button onclick="botReply('courses')">Courses</button>
+<button onclick="botReply('fees')">Fees</button>
+<button onclick="botReply('internship')">Internship</button>
+<button onclick="botReply('placement')">Placement</button>
+</div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MH Academy</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Three.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+
+<body>
+
+<!-- 3D Background -->
+<div id="three-bg"></div>
+
+<header>
+<div class="logo-text">MH Academy</div>
+
+<nav>
+<a href="index.html" class="nav-link active">Home</a>
+<a href="programs.html" class="nav-link">Programs</a>
+<a href="internship.html" class="nav-link">Internship</a>
+<a href="payment.html" class="nav-link">Payment</a>
+<a href="contact.html" class="nav-link">Contact</a>
+</nav>
+
+<div class="header-logo">
+<img src=".\images\logo.png" alt="Logo">
+</div>
+</header>
+
+<section class="hero reveal">
+<img src=".\images\logo.png" alt="Logo">
+<h1>Build Your <span class="highlight">Future With Confidence</span></h1>
+<p>Industry-driven programs with real-time projects & placement support.</p>
+
+<div class="cta-group">
+<button class="primary-btn" onclick="quickEnroll()">Enroll Now</button>
+<button class="primary-btn" onclick="openWhatsApp()">Talk to Advisor</button>
+</div>
+</section>
+
+<section class="learning-section reveal">
+<h2 class="section-title">Modern Learning Techniques</h2>
+
+<div class="learning-grid">
+
+<div class="learning-card tilt">
+<img src=".\Posters\1.jpg">
+<h3>Live Industry Projects</h3>
+</div>
+
+<div class="learning-card tilt">
+<img src=".\Posters\2.jpg">
+<h3>Hands-on Coding</h3>
+</div>
+
+<div class="learning-card tilt">
+<img src=".\Posters\3.jpg">
+<h3>Collaborative Learning</h3>
+</div>
+<div class="learning-card tilt">
+<img src=".\Posters\4.png">
+<h3>Recorded Video Learning</h3>
+</div>
+<div class="learning-card tilt">
+<img src=".\Posters\5.png">
+<h3>Direct Doubts Section </h3>
+</div>
+<div class="learning-card tilt">
+<img src=".\Posters\6.jpg">
+<h3>Understandable Learning</h3>
+</div>
+</div>
+</section>
+
+<section class="counter-section reveal">
+
+<div class="counter-box">
+<h2 class="counter" data-target="20000">2000+</h2>
+<p>Students Trained</p>
+</div>
+
+<div class="counter-box">
+<h2 class="counter" data-target="500">500+</h2>
+<p>Hiring Partners</p>
+</div>
+
+<div class="counter-box">
+<h2 class="counter" data-target="95">98</h2>
+<p>Placement Success %</p>
+</div>
+
+</section>
+
+<section class="learning-section reveal">
+<h2 class="section-title">Students Placed In </h2>
+
+<div class="logo-slider">
+<div class="logo-track">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l0.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l1.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l2.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l3.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l4.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l5.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l6.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l7.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l8.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l9.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l10.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l11.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l13.png">
+<img src="C:\Users\raj01\OneDrive\Pictures\Screenshots\l14.png">
+</div>
+<section class="courses-preview reveal">
+
+<h2 class="section-title">Popular Programs</h2>
+
+<div class="carousel-container">
+
+<div class="carousel-track" id="carouselTrack">
+
+<div class="course-card-preview">
+<div class="card-inner">
+<div class="card-front">
+<img src="./images/python.png">
+<h3>Python Full Stack</h3>
+</div>
+<div class="card-back">
+<p>Complete backend + frontend mastery with real projects.</p>
+<button onclick="openModal('Python Full Stack')">View Details</button>
+</div>
+</div>
+</div>
+
+<div class="course-card-preview">
+<div class="card-inner">
+<div class="card-front">
+<img src="./images/mern.png">
+<h3>MERN Stack</h3>
+</div>
+<div class="card-back">
+<p>Modern JS stack with React + Node + MongoDB.</p>
+<button onclick="openModal('MERN Stack')">View Details</button>
+</div>
+</div>
+</div>
+
+<div class="course-card-preview">
+<div class="card-inner">
+<div class="card-front">
+<img src="./images/datascience.png">
+<h3>Data Science</h3>
+</div>
+<div class="card-back">
+<p>ML, AI, analytics & real-time datasets.</p>
+<button onclick="openModal('Data Science')">View Details</button>
+</div>
+</div>
+</div>
+
+<div class="course-card-preview">
+<div class="card-inner">
+<div class="card-front">
+<img src="./images/cloud.png">
+<h3>Cloud Computing</h3>
+</div>
+<div class="card-back">
+<p>AWS, DevOps & scalable architecture.</p>
+<button onclick="openModal('Cloud Computing')">View Details</button>
+</div>
+</div>
+</div>
+
+<div class="course-card-preview">
+<div class="card-inner">
+<div class="card-front">
+<img src="./images/es.png">
+<h3>Embedded Systems</h3>
+</div>
+<div class="card-back">
+<p>Microcontrollers, RTOS & firmware design.</p>
+<button onclick="openModal('Embedded Systems')">View Details</button>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="carousel-nav">
+<span onclick="prevSlide()">❮</span>
+<span onclick="nextSlide()">❯</span>
+</div>
+
+</div>
+
+<div class="view-all-container">
+<button class="primary-btn"
+onclick="window.location.href='programs.html'">
+View All Programs →
+</button>
+</div>
+
+</section>
+
+<!-- Modal -->
+<div id="courseModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">✖</span>
+<h2 id="modalTitle"></h2>
+<p>Industry-ready training with live projects, mentorship & placement support.</p>
+<button class="primary-btn"
+onclick="window.location.href='programs.html'">
+Enroll Now
+</button>
+</div>
+</div>
+
+</section>
+</div>
+</section>
+<section class="learning-section reveal">
+<h2 class="section-title">Services Provided </h2>
+</div>
+<section class="learning-section reveal">
+<div class="learning-grid">
+
+<div class="learning-card tilt">
+<img src=".\Posters\0.jpg">
+<h3>Live Industry Projects</h3>
+</div>
+
+<div class="learning-card tilt">
+<img src=".\Posters\7.png">
+<h3>Hands-on Coding</h3>
+</div>
+
+<div class="learning-card tilt">
+<img src=".\Posters\6.jpg">
+<h3>Off-line Learning</h3>
+</div>
+
+<div class="learning-card tilt">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"><h3>Courses</h3>
+</div>
+
+<div class="learning-card tilt">
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+<h3>Internships</h3>
+</div>
+<div class="learning-card tilt">
+<img src="https://images.unsplash.com/photo-1551434678-e076c223a692">
+<h3>Projects</h3>
+</div>
+
+<!-- Floating Buttons -->
+<div class="whatsapp-float" onclick="openWhatsApp()">🟢</div>
+<div class="enroll-float" onclick="quickEnroll()">🎓</div>
+<div class="chatbot-float" onclick="toggleChatbot()">💬</div>
+
+<div id="chatbot">
+<div class="chat-header">
+MH AI Assistant
+<span onclick="toggleChatbot()">✖</span>
+</div>
+
+<div id="chatBody" class="chat-body">
+<p>Hello 👋 Select an option:</p>
+</div>
+
+<div class="chat-options">
+<button onclick="botReply('courses')">Courses</button>
+<button onclick="botReply('fees')">Fees</button>
+<button onclick="botReply('internship')">Internship</button>
+<button onclick="botReply('placement')">Placement</button>
+</div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

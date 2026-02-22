@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Courses</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header>
+<div class="logo">Learning Academy</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="courses.html" class="active">Courses</a>
+<a href="fees.html">Fees</a>
+<a href="internship.html">Internship</a>
+<a href="payment.html">Payment</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+<!-- ================= FLOATING ACTION BUTTONS ================= -->
+
+<!-- WHATSAPP FLOAT -->
+<div class="whatsapp-float" onclick="openWhatsApp()" title="WhatsApp Help">
+  🟢
+</div>
+
+<!-- ENROLL FLOAT (BELOW WHATSAPP) -->
+<div class="enroll-float" onclick="enrollCourse('Python Full Stack','Course','')" title="Enroll Now">
+  🎓
+</div>
+
+<!-- CHATBOT FLOAT (BOTTOM) -->
+<div class="chatbot-float" onclick="toggleChatbot()" title="Student Assistant">
+  🤖
+</div>
+
+<!-- ================= CHATBOT BOX ================= -->
+
+<div id="chatbot-box" style="display:none">
+  <div class="chat-header">
+    <span>Student Assistant</span>
+    <span style="cursor:pointer" onclick="toggleChatbot()">✖</span>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+</div>
+</div>
+
+<section class="course-fullscreen">
+<h1>SELECT YOUR COURSE</h1>
+<!-- PYTHON FULL STACK -->
+<div class="course-slide active">
+<h1>Python Full Stack</h1>
+<img src="images/python.png">
+<p class="course-desc">
+This Python Full Stack program focuses on complete web application development.
+Students start with Python fundamentals and programming logic.
+Object-oriented programming concepts are explained clearly.
+Frontend technologies such as HTML, CSS, and JavaScript are covered.
+Backend development using Flask or Django is introduced.
+Database design and SQL integration are taught.
+REST API development concepts are explained.
+Authentication and authorization basics are covered.
+Hands-on real-time projects are included.
+Debugging and error handling techniques are taught.
+Deployment fundamentals are explained.
+Version control using Git is introduced.
+Industry coding standards are followed.
+Problem-solving skills are strengthened.
+This program prepares students for full stack developer roles.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Python Full Stack')">Enroll Now</button>
+</div>
+
+<!-- JAVA FULL STACK -->
+<div class="course-slide">
+<h1>Java Full Stack</h1>
+<img src="images/java.png">
+<p class="course-desc">
+Java Full Stack program focuses on enterprise application development.
+Students begin with Core and Advanced Java concepts.
+Object-oriented principles are deeply explained.
+Frontend development using HTML, CSS, and JavaScript is taught.
+Backend development using Java frameworks is introduced.
+Database connectivity using JDBC is covered.
+RESTful services basics are explained.
+Application architecture concepts are discussed.
+Hands-on real-time projects are included.
+Debugging and performance optimization are taught.
+Security fundamentals are introduced.
+Industry best practices are followed.
+Code review and documentation skills are developed.
+Problem-solving through Java is emphasized.
+This program aligns with modern enterprise requirements.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Java Full Stack')">Enroll Now</button>
+</div>
+
+<!-- DATA ANALYTICS -->
+<div class="course-slide">
+<h1>Data Analytics</h1>
+<img src="images/dataanalytics.png">
+<p class="course-desc">
+Data Analytics program builds strong analytical and business skills.
+Excel fundamentals and advanced techniques are taught.
+SQL is introduced for database querying.
+Data cleaning and preprocessing methods are explained.
+Data visualization techniques are covered.
+Dashboard creation using analytical tools is taught.
+Business reporting concepts are discussed.
+Real-world datasets are used for practice.
+Case study-based learning is emphasized.
+Interpretation of analytical results is taught.
+Decision-making using data is explained.
+Hands-on analytical projects are included.
+Critical thinking skills are improved.
+Industry use cases are discussed.
+This program prepares students for analyst roles.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Data Analytics')">Enroll Now</button>
+</div>
+
+<!-- DATA SCIENCE -->
+<div class="course-slide">
+<h1>Data Science</h1>
+<img src="images/datascience.png">
+<p class="course-desc">
+Data Science program focuses on extracting insights from data.
+Python programming is used extensively.
+Statistics fundamentals are covered.
+Data preprocessing techniques are explained.
+Exploratory data analysis is practiced.
+Data visualization methods are taught.
+Machine learning integration is introduced.
+Feature engineering concepts are covered.
+Model evaluation techniques are explained.
+Real-world case studies are included.
+Hands-on projects are provided.
+Business interpretation of data is emphasized.
+Reporting and presentation skills are developed.
+Industry workflows are discussed.
+This program aligns with data science industry needs.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Data Science')">Enroll Now</button>
+</div>
+
+<!-- AI & ML -->
+<div class="course-slide">
+<h1>AI & Machine Learning</h1>
+<img src="images/aiml.png">
+<p class="course-desc">
+AI & ML program introduces artificial intelligence concepts.
+Machine learning fundamentals are explained step by step.
+Supervised learning techniques are covered.
+Unsupervised learning concepts are taught.
+Python-based ML implementation is practiced.
+Data preprocessing and feature engineering are covered.
+Model training and evaluation methods are explained.
+Optimization techniques are introduced.
+Neural network basics are covered.
+Hands-on ML projects are included.
+Problem-solving using ML is emphasized.
+Industry-level use cases are discussed.
+Ethical AI considerations are explained.
+Performance metrics are covered.
+This program prepares students for AI-driven careers.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('AI & ML')">Enroll Now</button>
+</div>
+
+<!-- DEVOPS -->
+<div class="course-slide">
+<h1>DevOps</h1>
+<img src="images/devops.png">
+<p class="course-desc">
+DevOps program focuses on integrating development and operations.
+Linux fundamentals are introduced.
+Version control using Git is explained.
+CI/CD pipeline concepts are covered.
+Automation basics are taught.
+Containerization concepts are introduced.
+Cloud integration fundamentals are discussed.
+Monitoring and logging techniques are explained.
+Infrastructure management concepts are covered.
+Hands-on DevOps workflows are practiced.
+Deployment strategies are taught.
+Security basics are introduced.
+Real-world DevOps scenarios are discussed.
+Team collaboration practices are emphasized.
+This program prepares students for DevOps roles.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('DevOps')">Enroll Now</button>
+</div>
+
+<!-- CLOUD COMPUTING -->
+<div class="course-slide">
+<h1>Cloud Computing</h1>
+<img src="images/cloud.png">
+<p class="course-desc">
+Cloud Computing program introduces cloud fundamentals.
+Service models such as IaaS, PaaS, and SaaS are explained.
+Deployment models are discussed.
+Virtualization concepts are covered.
+Cloud storage fundamentals are introduced.
+Compute services are explained.
+Networking basics in cloud are discussed.
+Security fundamentals are covered.
+Hands-on cloud operations are included.
+Cost management basics are explained.
+Scalability concepts are taught.
+Monitoring services are introduced.
+Backup and recovery concepts are discussed.
+Industry cloud use cases are explained.
+This program aligns with cloud industry requirements.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Cloud Computing')">Enroll Now</button>
+</div>
+
+<!-- .NET -->
+<div class="course-slide">
+<h1>.NET</h1>
+<img src="images/dotnet.png">
+<p class="course-desc">
+.NET program focuses on application development using Microsoft stack.
+C# programming fundamentals are covered.
+Object-oriented concepts are explained.
+ASP.NET framework basics are introduced.
+MVC architecture is discussed.
+Database integration concepts are covered.
+Web application development is taught.
+Hands-on projects are included.
+Debugging techniques are explained.
+Industry coding standards are followed.
+Backend logic development is emphasized.
+Security basics are introduced.
+Deployment fundamentals are discussed.
+Professional coding practices are developed.
+This program aligns with enterprise requirements.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('.NET')">Enroll Now</button>
+</div>
+
+<!-- EMBEDDED SYSTEMS -->
+<div class="course-slide">
+<h1>Embedded Systems</h1>
+<img src="images/es.png">
+<p class="course-desc">
+Embedded Systems program focuses on hardware-software integration.
+C programming fundamentals are covered.
+Microcontroller architecture is explained.
+Peripheral interfacing concepts are taught.
+Embedded C programming is emphasized.
+Timers and interrupts are explained.
+Communication protocols are introduced.
+Real-time system concepts are discussed.
+Hands-on lab sessions are included.
+Debugging techniques are taught.
+Embedded project development is practiced.
+Industry applications are discussed.
+Hardware troubleshooting skills are developed.
+Documentation practices are taught.
+This program prepares students for embedded roles.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Embedded Systems')">Enroll Now</button>
+</div>
+
+<!-- VLSI -->
+<div class="course-slide">
+<h1>VLSI</h1>
+<img src="images/vlsi.png">
+<p class="course-desc">
+VLSI program introduces semiconductor design fundamentals.
+Digital electronics concepts are covered.
+Logic design techniques are explained.
+RTL design concepts are introduced.
+Verilog basics are taught.
+Simulation and verification concepts are covered.
+Timing analysis fundamentals are explained.
+Design flow is discussed.
+Hands-on design examples are included.
+Industry standards are introduced.
+Low-power design concepts are discussed.
+Testing basics are explained.
+Design documentation practices are taught.
+Real-world applications are discussed.
+This program aligns with VLSI industry needs.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('VLSI')">Enroll Now</button>
+</div>
+
+<!-- AUTOCAD -->
+<div class="course-slide">
+<h1>AutoCAD</h1>
+<img src="images/autocad.png">
+<p class="course-desc">
+AutoCAD program focuses on professional drafting skills.
+Basic drafting concepts are introduced.
+2D drawing tools are explained.
+Dimensioning techniques are taught.
+Layer management is covered.
+Blocks and annotations are explained.
+Layout and printing concepts are introduced.
+Drawing standards are discussed.
+Hands-on drawing practice is included.
+Real-world design examples are used.
+Accuracy and precision are emphasized.
+Problem-solving through drawings is practiced.
+Industry drafting standards are followed.
+Project-based learning is included.
+This program prepares students for design roles.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('AutoCAD')">Enroll Now</button>
+</div>
+<!-- SOLAR PV SYSTEMS -->
+<div class="course-slide">
+<h1>Solar PV Systems</h1>
+<img src="images/spv.png">
+<p class="course-desc">
+Solar PV Systems program focuses on renewable energy and practical solar installations.
+Fundamentals of solar energy and photovoltaic principles are explained.
+Types of solar systems such as on-grid, off-grid, and hybrid are covered.
+Solar PV module construction and working are introduced.
+Electrical basics related to solar systems are explained.
+Inverter types and charge controllers are discussed.
+Battery technologies and energy storage basics are covered.
+Load calculation and system sizing are taught.
+Solar PV system design concepts are explained.
+Installation procedures and wiring practices are demonstrated.
+Commissioning and testing methods are covered.
+Safety standards and precautions are emphasized.
+Fault identification and troubleshooting techniques are taught.
+Operation and maintenance practices are explained.
+This program prepares students for solar technician and solar engineer roles.
+</p>
+<button class="enroll-btn" onclick="enrollCourse('Solar PV Systems')">Enroll Now</button>
+</div>
+
+<!-- MERN FULL STACK -->
+<div class="course-slide">
+<h1>MERN Full Stack</h1>
+<img src="images/mern.png">
+<p class="course-desc">
+MERN Full Stack program focuses on complete web application development.
+Fundamentals of web technologies such as HTML, CSS, and JavaScript are covered.
+Modern JavaScript concepts and ES6 features are explained.
+Frontend development using React.js is introduced.
+Component-based architecture and state management are taught.
+Backend development using Node.js and Express.js is covered.
+REST API development and integration are explained.
+Database design and CRUD operations using MongoDB are taught.
+Authentication and authorization concepts are introduced.
+Full stack integration between frontend and backend is practiced.
+Error handling and debugging techniques are explained.
+Version control using Git and GitHub is introduced.
+Application deployment concepts are covered.
+Real-world project development is included.
+This program prepares students for full stack developer roles.
+</p>
+<button onclick="enrollCourse('MERN Full Stack','Course + Internship','3 Months')">
+  Enroll Now
+</button>
+
+<div class="arrow-nav">
+  <span class="arrow left" onclick="prevCourse()">❮</span>
+  <span class="arrow right" onclick="nextCourse()">❯</span>
+</div>
+
+</section>
+
+<div id="chatbot-box">
+  <div class="chat-header">
+    Student Assistant <span onclick="toggleChatbot()">✖</span>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Ask about courses, fees, internship">
+    <button onclick="sendChat()">Send</button>
+  </div>
+</div>
+<script>
+  const pages = [
+    "index.html",
+    "courses.html",
+    "fees.html",
+    "internship.html",
+    "payment.html",
+    "contact.html"
+  ];
+
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const currentIndex = pages.indexOf(currentPage);
+
+  let isNavigating = false;
+
+  function goToPage(index){
+    if(index < 0 || index >= pages.length) return;
+    if(isNavigating) return;
+
+    isNavigating = true;
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+      window.location.href = pages[index];
+    }, 600);
+  }
+
+  window.addEventListener("scroll", () => {
+    if(isNavigating) return;
+
+    const scrollBottom =
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 5;
+
+    const scrollTop = window.scrollY <= 0;
+
+    if(scrollBottom && currentIndex < pages.length - 1){
+      goToPage(currentIndex + 1);
+    }
+
+    if(scrollTop && currentIndex > 0){
+      goToPage(currentIndex - 1);
+    }
+  });
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
