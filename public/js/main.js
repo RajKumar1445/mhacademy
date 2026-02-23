@@ -298,3 +298,315 @@ async function submitPayment(){
     console.log(error)
   }
 }
+// Course Fees
+const courseFees = {
+"Python Full Stack":15000,
+"Java Full Stack":15000,
+"Data Science":20000,
+"Data Analytics":18000,
+"AI & ML":25000,
+"DevOps":18000,
+"Cloud Computing":17000,
+".NET":14000,
+"Embedded Systems":22000,
+"EV Technology":25000,
+"VLSI":30000,
+"AutoCAD":12000,
+"Solar PV Systems":15000,
+"MERN Full Stack":16000
+};
+
+const courseSelect = document.getElementById("courseSelect");
+
+// Populate Courses
+for(let course in courseFees){
+let option = document.createElement("option");
+option.value = course;
+option.textContent = course;
+courseSelect.appendChild(option);
+}
+
+// Initialize course amount
+courseSelect.addEventListener("change", function(){
+document.getElementById("amountField").value =
+courseFees[this.value];
+});
+
+courseSelect.dispatchEvent(new Event("change"));
+
+function toggleProgramType(){
+
+const type = document.getElementById("programType").value;
+
+if(type === "Course"){
+document.getElementById("courseBox").classList.remove("hidden");
+document.getElementById("internshipBox").classList.add("hidden");
+courseSelect.dispatchEvent(new Event("change"));
+}else{
+document.getElementById("courseBox").classList.add("hidden");
+document.getElementById("internshipBox").classList.remove("hidden");
+updateInternshipFee();
+}
+
+}
+
+function updateInternshipFee(){
+
+const duration = document.getElementById("internDuration").value;
+
+let amount = 0;
+
+if(duration === "1") amount = 5000;
+if(duration === "2") amount = 10000;
+if(duration === "3") amount = 15000;
+
+document.getElementById("amountField").value = amount;
+
+}
+
+function proceedToPay(){
+
+const name = document.getElementById("studentName").value;
+const email = document.getElementById("studentEmail").value;
+const phone = document.getElementById("studentPhone").value;
+
+if(name === "" || email === "" || phone === ""){
+alert("Please fill all details first");
+return;
+}
+
+document.getElementById("paymentOptions").classList.remove("hidden");
+
+}
+
+function showMethod(){
+
+document.getElementById("upiBox").classList.add("hidden");
+document.getElementById("qrBox").classList.add("hidden");
+document.getElementById("cardBox").classList.add("hidden");
+
+const method = document.getElementById("paymentMethod").value;
+
+if(method==="upi")
+document.getElementById("upiBox").classList.remove("hidden");
+
+if(method==="qr")
+document.getElementById("qrBox").classList.remove("hidden");
+
+if(method==="card")
+document.getElementById("cardBox").classList.remove("hidden");
+
+}
+
+function confirmPayment(){
+
+if(document.getElementById("paymentMethod").value === ""){
+alert("Select payment method");
+return;
+}
+
+document.getElementById("paymentOptions").classList.add("hidden");
+document.getElementById("successMessage").classList.remove("hidden");
+
+}
+/* Toggle Internship */
+function toggleProgramType(){
+const type=document.getElementById("programType").value;
+document.getElementById("internshipBox").style.display =
+type==="Internship"?"block":"none";
+}
+
+/* Show Payment Options */
+function showPayment(){
+
+const name=document.getElementById("studentName").value.trim();
+const email=document.getElementById("studentEmail").value.trim();
+const phone=document.getElementById("studentPhone").value.trim();
+
+if(name==="" || email==="" || phone===""){
+alert("Please fill all details");
+return;
+}
+
+if(phone.length!==10){
+alert("Contact must be 10 digits");
+return;
+}
+
+document.getElementById("paymentOptions").style.display="block";
+}
+
+/* Show QR / UPI */
+function showMethod(val){
+document.getElementById("qrBox").style.display =
+val==="qr"?"block":"none";
+document.getElementById("upiBox").style.display =
+val==="upi"?"block":"none";
+}
+
+/* 🔥 ACTUAL DATABASE SUBMIT */
+async function submitPayment(){
+
+const data = {
+name: document.getElementById("studentName").value,
+email: document.getElementById("studentEmail").value,
+contact: document.getElementById("studentPhone").value,
+programType: document.getElementById("programType").value,
+course: document.getElementById("courseSelect").value,
+internDuration: document.getElementById("internDuration")?.value || null,
+amount: 10000
+}
+
+try{
+
+const res = await fetch('/api/payment',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify(data)
+})
+
+const result = await res.json()
+
+document.getElementById("successMessage").style.display="block"
+document.getElementById("paymentOptions").style.display="none"
+
+}catch(err){
+alert("Error saving payment")
+console.log(err)
+}
+
+}
+/* Toggle Internship */
+function toggleProgramType(){
+const type=document.getElementById("programType").value;
+document.getElementById("internshipBox").style.display =
+type==="Internship"?"block":"none";
+}
+
+/* Show Payment Options */
+function showPayment(){
+
+const name=document.getElementById("studentName").value.trim();
+const email=document.getElementById("studentEmail").value.trim();
+const phone=document.getElementById("studentPhone").value.trim();
+
+if(name==="" || email==="" || phone===""){
+alert("Please fill all details");
+return;
+}
+
+if(phone.length!==10){
+alert("Contact must be 10 digits");
+return;
+}
+
+document.getElementById("paymentOptions").style.display="block";
+}
+
+/* Show QR / UPI */
+function showMethod(val){
+document.getElementById("qrBox").style.display =
+val==="qr"?"block":"none";
+document.getElementById("upiBox").style.display =
+val==="upi"?"block":"none";
+}
+
+/* 🔥 ACTUAL DATABASE SUBMIT */
+async function submitPayment(){
+
+const data = {
+name: document.getElementById("studentName").value,
+email: document.getElementById("studentEmail").value,
+contact: document.getElementById("studentPhone").value,
+programType: document.getElementById("programType").value,
+course: document.getElementById("courseSelect").value,
+internDuration: document.getElementById("internDuration")?.value || null,
+amount: 10000
+}
+
+try{
+
+const res = await fetch('/api/payment',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify(data)
+})
+
+const result = await res.json()
+
+document.getElementById("successMessage").style.display="block"
+document.getElementById("paymentOptions").style.display="none"
+
+}catch(err){
+alert("Error saving payment")
+console.log(err)
+}
+
+}
+/* Toggle Internship */
+function toggleProgramType(){
+const type=document.getElementById("programType").value;
+document.getElementById("internshipBox").style.display =
+type==="Internship"?"block":"none";
+}
+
+/* Show Payment Options */
+function showPayment(){
+
+const name=document.getElementById("studentName").value.trim();
+const email=document.getElementById("studentEmail").value.trim();
+const phone=document.getElementById("studentPhone").value.trim();
+
+if(name==="" || email==="" || phone===""){
+alert("Please fill all details");
+return;
+}
+
+if(phone.length!==10){
+alert("Contact must be 10 digits");
+return;
+}
+
+document.getElementById("paymentOptions").style.display="block";
+}
+
+/* Show QR / UPI */
+function showMethod(val){
+document.getElementById("qrBox").style.display =
+val==="qr"?"block":"none";
+document.getElementById("upiBox").style.display =
+val==="upi"?"block":"none";
+}
+
+/* 🔥 ACTUAL DATABASE SUBMIT */
+async function submitPayment(){
+
+const data = {
+name: document.getElementById("studentName").value,
+email: document.getElementById("studentEmail").value,
+contact: document.getElementById("studentPhone").value,
+programType: document.getElementById("programType").value,
+course: document.getElementById("courseSelect").value,
+internDuration: document.getElementById("internDuration")?.value || null,
+amount: 10000
+}
+
+try{
+
+const res = await fetch('/api/payment',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify(data)
+})
+
+const result = await res.json()
+
+document.getElementById("successMessage").style.display="block"
+document.getElementById("paymentOptions").style.display="none"
+
+}catch(err){
+alert("Error saving payment")
+console.log(err)
+}
+
+}

@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Secure Payment | MH Academy</title>
+<title>Programs | MH Academy</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
+<body>
+
+<div id="three-bg"></div>
+
 <header>
 <div class="logo-text">MH Academy</div>
 
 <nav>
 <a href="index.html" class="nav-link ">Home</a>
 <a href="programs.html" class="nav-link ">Programs</a>
-<a href="internship.html" class="nav-link">Internship</a>
-<a href="payment.html" class="nav-link">Payment</a>
-<a href="contact.html" class="nav-link active">Contact</a>
+<a href="internship.html" class="nav-link ">Internship</a>
+<a href="payment.html" class="nav-link active">Payment</a>
+<a href="contact.html" class="nav-link">Contact</a>
 </nav>
 
 <div class="header-logo">
 <img src=".\images\logo.png" alt="Logo">
 </div>
 </header>
+
 <body>
 
 <section class="payment-section">
@@ -109,75 +116,6 @@
 </div>
 </section>
 
-<script>
-
-/* Toggle Internship */
-function toggleProgramType(){
-const type=document.getElementById("programType").value;
-document.getElementById("internshipBox").style.display =
-type==="Internship"?"block":"none";
-}
-
-/* Show Payment Options */
-function showPayment(){
-
-const name=document.getElementById("studentName").value.trim();
-const email=document.getElementById("studentEmail").value.trim();
-const phone=document.getElementById("studentPhone").value.trim();
-
-if(name==="" || email==="" || phone===""){
-alert("Please fill all details");
-return;
-}
-
-if(phone.length!==10){
-alert("Contact must be 10 digits");
-return;
-}
-
-document.getElementById("paymentOptions").style.display="block";
-}
-
-/* Show QR / UPI */
-function showMethod(val){
-document.getElementById("qrBox").style.display =
-val==="qr"?"block":"none";
-document.getElementById("upiBox").style.display =
-val==="upi"?"block":"none";
-}
-
-/* 🔥 ACTUAL DATABASE SUBMIT */
-async function submitPayment(){
-
-const data = {
-name: document.getElementById("studentName").value,
-email: document.getElementById("studentEmail").value,
-contact: document.getElementById("studentPhone").value,
-programType: document.getElementById("programType").value,
-course: document.getElementById("courseSelect").value,
-internDuration: document.getElementById("internDuration")?.value || null,
-amount: 10000
-}
-
-try{
-
-const res = await fetch('/api/payment',{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body: JSON.stringify(data)
-})
-
-const result = await res.json()
-
-document.getElementById("successMessage").style.display="block"
-document.getElementById("paymentOptions").style.display="none"
-
-}catch(err){
-alert("Error saving payment")
-console.log(err)
-}
-
-}
 <!-- Floating Buttons -->
 <div class="whatsapp-float" onclick="openWhatsApp()">🟢</div>
 <div class="enroll-float" onclick="quickEnroll()">🎓</div>
@@ -200,7 +138,7 @@ MH AI Assistant
 <button onclick="botReply('placement')">Placement</button>
 </div>
 </div>
-</script>
+<script src="js/payment.js"></script>
 
 </body>
 </html>

@@ -1,15 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const Payment = require("../models/Payment");
+const mongoose = require("mongoose");
 
-router.post("/", async (req, res) => {
-  try {
-    const payment = new Payment(req.body);
-    await payment.save();
-    res.json({ message: "Payment Saved Successfully" });
-  } catch (err) {
-    res.status(500).json({ error: "Error saving payment" });
-  }
+const paymentSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  phone: String,
+  programType: String,
+  courseName: String,
+  internshipDuration: String,
+  paymentMethod: String,
+  amount: Number,
+  status: { type: String, default: "Pending" },
+  createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = router;
+module.exports = mongoose.model("Payment", paymentSchema);

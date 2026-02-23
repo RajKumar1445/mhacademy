@@ -73,7 +73,7 @@
 <label>Your Message</label>
 <textarea id="message" rows="4" required></textarea>
 
-<button type="button" class="primary-btn" onclick="submitEnquiry()">
+<button type="submit" class="primary-btn" onclick="submitEnquiry()">
 Submit Enquiry
 </button>
 
@@ -146,27 +146,6 @@ MH AI Assistant
 <button onclick="botReply('placement')">Placement</button>
 </div>
 </div>
-
-<script>
-
-/* Enquiry Submit */
-document.getElementById("enquiryForm").addEventListener("submit", function(e){
-e.preventDefault();
-
-const phone = document.getElementById("phone").value;
-
-if(phone.length !== 10){
-alert("Contact number must be 10 digits.");
-return;
-}
-
-document.getElementById("successMsg").style.display = "block";
-this.reset();
-
-});
-
-</script>
-
-<script src="js/main.js"></script>
+<script src="js/enquiry.js"></script>
 </body>
 </html>
